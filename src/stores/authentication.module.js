@@ -18,6 +18,7 @@ export const authentication = {
       userService.login(email, password).then(
         (user) => {
           commit("loginSuccess", user);
+          dispatch("user/currentuser", {}, { root: true });
           router.push("/");
         },
         (error) => {
@@ -26,9 +27,10 @@ export const authentication = {
         }
       );
     },
-    logout({ commit }) {
+    logout({ dispatch, commit }) {
       userService.logout();
       commit("logout");
+      commit("user/clear", {}, { root: true });
     },
   },
   mutations: {

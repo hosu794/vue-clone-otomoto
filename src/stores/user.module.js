@@ -34,5 +34,9 @@ export const user = {
       state.loading = false;
       (state.currentUser = null), (state.error = error);
     },
+    clear(state) {
+      state.loading = false;
+      state.currentUser = null;
+    },
   },
 };

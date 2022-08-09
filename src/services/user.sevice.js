@@ -49,6 +49,7 @@ function register(user) {
 
 function logout() {
   localStorage.removeItem("user");
+  // location.reload(true);
 }
 
 function handleResponse(response) {
