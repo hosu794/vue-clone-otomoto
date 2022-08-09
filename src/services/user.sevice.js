@@ -8,8 +8,6 @@ function currentUser() {
     headers: authHeader(),
   };
 
-  console.log(authHeader());
-
   return fetch("http://localhost:1323/user/current", requestOptions).then(
     handleResponse
   );
@@ -35,11 +33,11 @@ function login(email, password) {
     });
 }
 
-function register(user) {
+function register({ firstname, lastname, email, password }) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ user }),
+    body: JSON.stringify({ firstname, lastname, email, password }),
   };
 
   return fetch("http://localhost:1323/register/user", requestOptions).then(

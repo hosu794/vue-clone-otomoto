@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import Login from "../components/TheLogin.vue";
+import Register from "../components/TheRegister.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,19 +24,24 @@ export const router = createRouter({
       name: "login",
       component: Login,
     },
+    {
+      path: "/register",
+      name: "register",
+      component: Register,
+    },
   ],
 });
 
-router.beforeEach((to, from, next) => {
-  const publicPages = ["/login"];
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem("user");
+// router.beforeEach((to, from, next) => {
+//   const publicPages = ["/login"];
+//   const authRequired = !publicPages.includes(to.path);
+//   const loggedIn = localStorage.getItem("user");
 
-  if (authRequired && !loggedIn) {
-    return next("/login");
-  }
+//   if (authRequired && !loggedIn) {
+//     return next("/login");
+//   }
 
-  next();
-});
+//   next();
+// });
 
 export default router;

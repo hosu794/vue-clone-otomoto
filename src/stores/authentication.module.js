@@ -12,6 +12,22 @@ export const authentication = {
   namespaced: true,
   state: initialState,
   actions: {
+    register({ dispatch, commit }, { firstName, lastName, email, password }) {
+      commit("registerRequest");
+
+      userService
+        .register({ firstname: firstName, lastname: lastName, email, password })
+        .then(
+          (response) => {
+            commit("registerSuccess");
+            dispatch("login", { email, password });
+          },
+          (error) => {
+            commit("registerFailure", error);
+            dispatch("alert/error");
+          }
+        );
+    },
     login({ dispatch, commit }, { email, password }) {
       commit("loginRequest", user);
 
@@ -34,6 +50,15 @@ export const authentication = {
     },
   },
   mutations: {
+    registerRequest(state) {
+      state.status = { ...state.status, registeringIn: true };
+    },
+    registerSuccess(state) {
+      state.status = { ...state.status, registeredIn: true };
+    },
+    registerFailure(state) {
+      state.status = {};
+    },
     loginRequest(state, user) {
       state.status = { loggingIn: true };
       state.user = user;
