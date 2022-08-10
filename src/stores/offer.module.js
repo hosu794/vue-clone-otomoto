@@ -7,6 +7,8 @@ export const offer = {
     next: 0,
     total: 0,
   },
-  actions: {},
+  actions: {
+    getPaginatedOffers({ dispatch, commit }, page) {},
+  },
   mutations: {},
 };

@@ -13,7 +13,7 @@ function getPaginatedOffers(page) {
     headers: { "Content-Type": "application/json" },
   };
 
-  return fetch(`http://localhost:1323/offers?page=${page}`, requestOptions);
+  return fetch(`http://localhost:1323/offers?page=${page - 1}`, requestOptions);
 }
 
 function getOfferById(offerId) {
