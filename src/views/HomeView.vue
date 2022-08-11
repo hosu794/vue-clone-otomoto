@@ -1,6 +1,6 @@
 <template lang="">
   <div>
-    <h1>Offers!</h1>
+    <offers :offers="offers"></offers>
     <pagination
       :total-pages="computedTotalPages"
       :total="computedTotal"
@@ -12,11 +12,13 @@
 </template>
 <script>
 import PaginationVue from "../components/Pagination.vue";
+import Offers from "../components/Offers.vue";
 import { offerService } from "../services/offer.service";
 
 export default {
   components: {
     pagination: PaginationVue,
+    offers: Offers,
   },
   mounted() {
     this.fetchPaginatedOffers(this.currentPage);
@@ -26,6 +28,7 @@ export default {
       currentPage: 1,
       total: 0,
       totalPages: 0,
+      offers: [],
     };
   },
   computed: {
@@ -52,6 +55,7 @@ export default {
           console.log(data);
           this.total = data.total;
           this.totalPages = data.total_pages;
+          this.offers = data.data;
         });
     },
   },

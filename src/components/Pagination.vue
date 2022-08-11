@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <ul class="pagination">
-      <li class="pagination-item">
+  <div
+    class="max-w-2xl mx-auto py-16 px-6 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
+  >
+    <ul class="inline-flex -space-x-px">
+      <li class="">
         <button
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           type="button"
           @click="onClickFirstPage"
           :disabled="isInFirstPage"
@@ -13,8 +15,9 @@
         </button>
       </li>
 
-      <li class="pagination-item">
+      <li class="">
         <button
+          class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           type="button"
           @click="onClickPreviousPage"
           :disabled="isInFirstPage"
@@ -24,8 +27,9 @@
         </button>
       </li>
 
-      <li v-for="page in pages" class="pagination-item">
+      <li v-for="page in pages" class="">
         <button
+          class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           type="button"
           @click="onClickPage(page.name)"
           :disabled="page.isDisabled"
@@ -36,8 +40,9 @@
         </button>
       </li>
 
-      <li class="pagination-item">
+      <li class="">
         <button
+          class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           type="button"
           @click="onClickNextPage"
           :disabled="isInLastPage"
@@ -47,8 +52,9 @@
         </button>
       </li>
 
-      <li class="pagination-item">
+      <li class="">
         <button
+          class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           type="button"
           @click="onClickLastPage"
           :disabled="isInLastPage"
