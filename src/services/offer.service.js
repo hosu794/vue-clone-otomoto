@@ -3,9 +3,10 @@ export const offerService = {
   getOfferById,
   addOffer,
   deleteOffer,
+  uploadFile,
 };
 
-import { authHeader } from "../helpers/auth-header";
+import { authHeader, authHeaderUploadFile } from "../helpers/auth-header";
 
 function getPaginatedOffers(page) {
   const requestOptions = {
@@ -25,11 +26,61 @@ function getOfferById(offerId) {
   return fetch(`http://localhost:1323/offers/${offerId}`, requestOptions);
 }
 
-function addOffer(offerRequest) {
+function addOffer({
+  type,
+  from,
+  brand,
+  model,
+  generation,
+  mileage,
+  capacity,
+  fuel,
+  power,
+  transmission,
+  drive,
+  vin,
+  bodyType,
+  doorCount,
+  color,
+  colorType,
+  country,
+  vat,
+  firstregistration,
+  notCrashed,
+  conditionalCar,
+  leasing,
+  price,
+  phone,
+}) {
   const requestOptions = {
     method: "POST",
     headers: authHeader(),
-    body: JSON.stringify({ offerRequest }),
+    body: JSON.stringify({
+      type,
+      from,
+      brand,
+      model,
+      generation,
+      mileage,
+      capacity,
+      fuel,
+      power,
+      transmission,
+      drive,
+      vin,
+      bodyType,
+      doorCount,
+      color,
+      colorType,
+      country,
+      vat,
+      firstregistration,
+      notCrashed,
+      conditionalCar,
+      leasing,
+      price,
+      phone,
+    }),
   };
 
   return fetch("http://localhost:1323/offer", requestOptions);
@@ -42,4 +93,21 @@ function deleteOffer(offerId) {
   };
 
   return fetch(`http://localhost:1323/offers/${offerId}`, requestOptions);
+}
+
+function uploadFile(file, offerId) {
+  const formData = new FormData();
+
+  formData.append("file", file, file.name);
+
+  const requestOptions = {
+    method: "POST",
+    headers: authHeaderUploadFile(),
+    body: formData,
+  };
+
+  return fetch(
+    `http://localhost:1323/offer/upload/image/${offerId}`,
+    requestOptions
+  );
 }

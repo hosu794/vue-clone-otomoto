@@ -16,6 +16,13 @@
       </a>
       <div v-if="currentUser" class="flex md:order-2">
         <button
+          @click="addOfferRedirect"
+          type="button"
+          class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        >
+          Add offer
+        </button>
+        <button
           type="button"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
@@ -133,6 +140,8 @@
   </nav>
 </template>
 <script>
+import router from "../router";
+
 export default {
   computed: {
     currentUser() {
@@ -145,6 +154,9 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("authentication/logout");
+    },
+    addOfferRedirect() {
+      router.push("/create/offer");
     },
   },
 };

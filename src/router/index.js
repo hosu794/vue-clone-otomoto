@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import Login from "../components/TheLogin.vue";
 import Register from "../components/TheRegister.vue";
 import Offer from "../components/Offer.vue";
+import CreateOffer from "../components/CreateOffer.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +35,11 @@ export const router = createRouter({
       path: "/offer/:id",
       name: "offer",
       component: Offer,
+    },
+    {
+      path: "/create/offer",
+      name: "create-offer",
+      component: CreateOffer,
     },
   ],
 });
