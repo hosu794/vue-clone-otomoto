@@ -8,7 +8,11 @@
           Create offer
         </h2>
       </div>
-      <form @submit.prevent="handleSubmit" class="mt-8 space-y-6" action="#">
+      <form
+        @submit.prevent="handleSubmit"
+        enctype="multipart/form-data"
+        class="mt-8 space-y-6"
+      >
         <input type="hidden" name="remember" value="true" />
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
@@ -218,7 +222,7 @@
             <div v-show="submitted && !country">Country is required</div>
           </div>
           <div>
-            <label for="vat" class="">Vat</label>
+            <!-- <label for="vat" class="">Vat</label>
             <input
               id="vat"
               name="vat"
@@ -226,7 +230,20 @@
               class="mt-2 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Vat"
               v-model="vat"
-            />
+            /> -->
+            <label
+              for="vat"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Vat</label
+            >
+            <select
+              id="vat"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              v-model="vat"
+            >
+              <option selected value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
             <div v-show="submitted && !vat">Vat is required</div>
           </div>
           <div>
@@ -243,7 +260,7 @@
             </div>
           </div>
           <div>
-            <label for="notCrashed" class="">Not crashed</label>
+            <!-- <label for="notCrashed" class="">Not crashed</label>
             <input
               id="notCrashed"
               name="notCrashed"
@@ -251,33 +268,72 @@
               class="mt-2 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Not crashed"
               v-model="notCrashed"
-            />
+            /> -->
+            <label
+              for="conditionalCar"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Not crashed</label
+            >
+            <select
+              id="notCrashed"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              v-model="notCrashed"
+            >
+              <option selected value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
             <div v-show="submitted && !notCrashed">Not crashed is required</div>
           </div>
           <div>
-            <label for="conditionalCar" class="">Conditional Car</label>
+            <label
+              for="conditionalCar"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Conditional Car</label
+            >
+            <select
+              id="conditionalCar"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              v-model="conditionalCar"
+            >
+              <option selected value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+            <!-- <label for="conditionalCar" class="">Conditional Car</label>
             <input
               id="conditionCar"
               name="conditionCar"
               type="number"
               class="mt-2 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               v-model="conditionalCar"
-            />
+            /> -->
             <div v-show="submitted && !conditionalCar">
               Conditional Car is required
             </div>
           </div>
 
           <div>
-            <label for="leasing" class="">Leasing</label>
-            <input
+            <label
+              for="leasing"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Leasing</label
+            >
+            <select
+              id="leasing"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              v-model="leasing"
+            >
+              <option selected value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+            <!-- <label for="leasing" class="">Leasing</label> -->
+            <!-- <input
               id="leasing"
               name="leasing"
               type="number"
               class="mt-2 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Leasing"
               v-model="leasing"
-            />
+            /> -->
             <div v-show="submitted && !leasing">Leasing is required</div>
           </div>
           <div>
@@ -328,19 +384,18 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-8">
-            <label class="btn btn-default p-0">
-              <input
-                type="file"
-                accept="image/*"
-                name="files"
-                multiple
-                @change="selectFiles($event)"
-              />
-            </label>
-          </div>
+        <div>
+          <label for="files" class="">Files</label>
+          <input
+            type="file"
+            accept="image/*"
+            name="files"
+            multiple
+            @change="selectFiles"
+          />
+        </div>
 
+        <div class="row">
           <div>
             <img v-for="preview in previews" :src="preview" class="preview" />
           </div>
@@ -461,6 +516,7 @@ export default {
       this.message = [];
       if (this.selectedFiles) {
         for (let i = 0; i < this.selectedFiles.length; i++) {
+          console.log("Upload");
           this.upload(i, this.selectedFiles[i], offerId);
         }
       }
@@ -485,8 +541,12 @@ export default {
       this.message = [];
       this.progressInfos = [];
       this.selectedFiles = event.target.files;
+
+      console.log(event.target.files);
+
       if (this.selectedFiles && this.selectedFiles[0]) {
         const numberOfFiles = this.selectedFiles.length;
+        console.log("Number of files: ");
         for (let i = 0; i < numberOfFiles; i++) {
           const reader = new FileReader();
           reader.onload = (e) => {
@@ -554,6 +614,9 @@ export default {
       ) {
         const parsedIntTransmission = parseInt(transmission);
         const parsedIntVat = parseInt(vat);
+        const parsedIntNotCrashed = parseInt(notCrashed);
+        const parsedIntConditionalCar = parseInt(conditionalCar);
+        const parsedIntLeasing = parseInt(leasing);
 
         offerService
           .addOffer({
@@ -576,9 +639,9 @@ export default {
             country,
             vat: parsedIntVat,
             firstregistration: firstRegistration,
-            notCrashed,
-            conditionalCar,
-            leasing,
+            notCrashed: parsedIntNotCrashed,
+            conditionalCar: parsedIntConditionalCar,
+            leasing: parsedIntLeasing,
             price,
             phone,
           })
