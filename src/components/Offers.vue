@@ -3,6 +3,7 @@
     <div
       class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
     >
+      <search-offer></search-offer>
       <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">
         Offers
       </h2>
@@ -48,7 +49,11 @@
   </div>
 </template>
 <script>
+import OfferFilterSearch from "../components/OfferFilterSearch.vue";
 export default {
+  components: {
+    searchOffer: OfferFilterSearch,
+  },
   props: {
     offers: {
       type: Array,

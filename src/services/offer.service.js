@@ -4,6 +4,7 @@ export const offerService = {
   addOffer,
   deleteOffer,
   uploadFile,
+  getPaginatedOffersWithParamFilter,
 };
 
 import { authHeader, authHeaderUploadFile } from "../helpers/auth-header";
@@ -108,6 +109,18 @@ function uploadFile(file, offerId) {
 
   return fetch(
     `http://localhost:1323/offer/upload/image/${offerId}`,
+    requestOptions
+  );
+}
+
+function getPaginatedOffersWithParamFilter(params) {
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  };
+
+  return fetch(
+    `http://localhost:1323/offers/filter?` + new URLSearchParams(params),
     requestOptions
   );
 }
