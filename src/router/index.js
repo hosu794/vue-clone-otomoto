@@ -4,6 +4,7 @@ import Login from "../components/TheLogin.vue";
 import Register from "../components/TheRegister.vue";
 import Offer from "../components/Offer.vue";
 import CreateOffer from "../components/CreateOffer.vue";
+import SearchFilter from "../components/SearchFilter.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,6 +41,11 @@ export const router = createRouter({
       path: "/create/offer",
       name: "create-offer",
       component: CreateOffer,
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: SearchFilter,
     },
   ],
 });

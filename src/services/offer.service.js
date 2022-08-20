@@ -113,11 +113,13 @@ function uploadFile(file, offerId) {
   );
 }
 
-function getPaginatedOffersWithParamFilter(params) {
+function getPaginatedOffersWithParamFilter(page, params) {
   const requestOptions = {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   };
+
+  params.page = page - 1;
 
   return fetch(
     `http://localhost:1323/offers/filter?` + new URLSearchParams(params),
