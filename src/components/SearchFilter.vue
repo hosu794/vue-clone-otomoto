@@ -58,7 +58,10 @@ export default {
   methods: {
     onPageChange(page) {
       this.currentPage = page;
-      this.fetchPaginatedOffers(this.currentPage);
+      this.fetchPaginatedOffers(
+        this.currentPage,
+        getAllUrlParams(window.location.search)
+      );
     },
     fetchPaginatedOffers(page, params) {
       offerService

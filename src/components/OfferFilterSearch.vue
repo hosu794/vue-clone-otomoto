@@ -26,6 +26,7 @@
 
       <button
         class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md"
+        @click="resetFilter"
       >
         Reset Filter
       </button>
@@ -156,12 +157,12 @@
             class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
           >
             <option value="1">1</option>
-            <option value="1">2</option>
-            <option value="1">3</option>
-            <option value="1">4</option>
-            <option value="1">5</option>
-            <option value="1">6</option>
-            <option value="1">7</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
           </select>
         </div>
 
@@ -209,6 +210,21 @@ export default {
     };
   },
   methods: {
+    resetFilter() {
+      this.type = "";
+      this.model = "";
+      this.brand = "";
+      this.generation = null;
+      this.mileageFrom = null;
+      this.mileageTo = null;
+      this.capacityFrom = null;
+      this.capacityTo = null;
+      this.fuel = "";
+      this.priceFrom = null;
+      this.priceTo = null;
+      this.color = "";
+      this.doorCount = null;
+    },
     searchFilter() {
       let paramsObject = JSON.parse(JSON.stringify(this.$data));
 
